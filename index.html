@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Corner</title>
+
+  <!-- EXTERNAL CSS: main stylesheet for the whole site -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- INTERNAL CSS: styles used only by the "Lab Demos" section of this page -->
+  <style>
+    /* Box model diagram */
+    .bm-margin  { background-color: #f9cb9c; padding: 28px; max-width: 340px; margin-bottom: 8px; }
+    .bm-box     { background-color: #b7e1a1; border: 8px solid #1d2b3a; padding: 24px; }
+    .bm-content { background-color: #9fc5e8; padding: 16px; text-align: center; font-weight: 700; }
+
+    /* Margin collapsing demo: two stacked blocks in normal flow */
+    .collapse-a { background-color: #ffd54f; margin-bottom: 40px; padding: 12px; }
+    .collapse-b { background-color: #90caf9; margin-top: 30px;    padding: 12px; }
+
+    /* Width / height constraints demo */
+    .constraint-box {
+      width: 80%;
+      min-width: 280px;
+      max-width: 700px;
+      height: 160px;
+      min-height: 120px;
+      max-height: 220px;
+      background-color: #ffffff;
+      border: 3px dashed #1d2b3a;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    /* Overflow demo: same text, three overflow values */
+    .overflow-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; row-gap: 120px; margin-bottom: 120px; }
+    .overflow-box { height: 90px; padding: 8px; background-color: #ffffff; border: 2px solid #1d2b3a; font-size: 0.9rem; line-height: 1.4; }
+    .of-visible { overflow: visible; }
+    .of-hidden  { overflow: hidden; }
+    .of-scroll  { overflow: scroll; }
+
+    /* Display demo */
+    .tag       { display: inline; background-color: #ffe08a; padding: 2px 8px; }
+    .pill      { display: inline-block; width: 120px; height: 40px; line-height: 40px; text-align: center; background-color: #1d2b3a; color: #ffffff; margin: 4px; }
+    .block-row { background-color: #cfe3f5; margin-bottom: 6px; padding: 6px 10px; }
+
+    .demo-note { font-size: 0.95rem; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="brand">Food Corner</div>
+    <nav>
+      <ul>
+        <li><a href="#welcome">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== WELCOME ===== -->
+  <section id="welcome">
+    <h1>Hungry? Your table is waiting.</h1>
+    <!-- INLINE CSS: one-off style applied directly to this paragraph -->
+    <p style="font-size: 1.2rem; color: #ffe8a3; max-width: 560px; margin: 0 auto 28px;">
+      Fresh pizza, juicy burgers, stacked sandwiches and pasta made to order, served on the corner of good taste.
+    </p>
+    <a class="btn" href="#menu">Explore Menu</a>
+    <p class="hidden-note">This line is hidden with display: none.</p>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Menu</h2>
+
+      <div class="menu-grid">
+        <article class="card">
+          <img src="images/pizza.svg" alt="Pizza with pepperoni and basil">
+          <h3>Pizza</h3>
+          <p>Wood-fired crust, tomato sauce, mozzarella and pepperoni.</p>
+          <p class="price">$9.99</p>
+          <button class="btn" type="button">Order Now</button>
+        </article>
+
+        <article class="card">
+          <img src="images/burger.svg" alt="Cheeseburger">
+          <h3>Burger</h3>
+          <p>Grilled beef patty, cheddar, lettuce and a toasted bun.</p>
+          <p class="price">$7.49</p>
+          <button class="btn" type="button">Order Now</button>
+        </article>
+
+        <article class="card">
+          <img src="images/sandwich.svg" alt="Stacked sandwich">
+          <h3>Sandwich</h3>
+          <p>Farmhouse bread with ham, cheese, tomato and crisp greens.</p>
+          <p class="price">$5.99</p>
+          <button class="btn" type="button">Order Now</button>
+        </article>
+
+        <article class="card">
+          <img src="images/pasta.svg" alt="Plate of pasta in tomato sauce">
+          <h3>Pasta</h3>
+          <p>Fresh pasta tossed in slow-cooked tomato sauce and basil.</p>
+          <p class="price">$8.99</p>
+          <button class="btn" type="button">Order Now</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <p class="about-text">
+        Food Corner started as a small counter on a busy street and grew into the neighbourhood's favourite
+        place for a quick, honest meal. We cook everything fresh each day, use local ingredients wherever we
+        can, and keep the menu short so every dish gets the attention it deserves.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+
+      <form class="contact-form" action="#" onsubmit="event.preventDefault(); alert('Thanks! Your message has been sent.'); this.reset();">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+
+        <input type="submit" class="btn" value="Send Message">
+      </form>
+    </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <!-- INLINE CSS: small inline tweak on the footer text -->
+    <p style="margin: 0; font-size: 0.95rem;">&copy; 2026 Food Corner</p>
+  </footer>
+
+</body>
+</html>

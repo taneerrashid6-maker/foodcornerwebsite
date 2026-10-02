@@ -1,0 +1,355 @@
+/* =====================================================
+   Food Corner - style.css (EXTERNAL CSS)
+   Palette: navy #1d2b3a, tomato (named), mustard #f4b41a,
+            light grey-blue #f4f6f8
+   ===================================================== */
+
+
+/* ---------- INHERITANCE: common font and colour set once on body ---------- */
+body {                                   /* ELEMENT selector */
+  font-family: "Trebuchet MS", Verdana, sans-serif;   /* font-family */
+  font-size: 1rem;                       /* font-size */
+  font-weight: 400;                      /* font-weight */
+  line-height: 1.6;                      /* line-height */
+  color: #1d2b3a;                        /* HEX colour, inherited by almost everything */
+  background-color: #f4f6f8;
+  margin: 0;
+}
+
+/* GROUPING selector: one rule for three elements */
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;   /* overrides the inherited body font */
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Inheritance with the "inherit" keyword: links take the colour of their parent */
+a {
+  color: inherit;
+}
+
+
+/* ---------- Layout helpers ---------- */
+.container {                             /* CLASS selector */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 56px 0;                       /* consistent vertical spacing for every section */
+}
+
+.section-title {
+  text-align: center;                    /* text-align */
+  font-size: 2rem;
+  margin: 0 0 32px;
+}
+
+/* PSEUDO-ELEMENTS: symbols before and after each section heading */
+.section-title::before {
+  content: "\2605  ";                    /* star */
+  color: tomato;
+}
+.section-title::after {
+  content: "  \2605";
+  color: tomato;
+}
+
+
+/* ---------- Header and navigation ---------- */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  background-color: #1d2b3a;
+  color: white;                          /* NAMED colour */
+}
+
+.brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;                    /* font-style */
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #f4b41a;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline;                       /* DISPLAY: inline */
+}
+
+/* DESCENDANT selector: only links inside nav > ul > li */
+nav ul li a {
+  display: inline-block;                 /* DISPLAY: inline-block */
+  padding: 8px 16px;
+  margin-left: 6px;
+  color: white;
+  text-decoration: none;                 /* text-decoration */
+  border-radius: 999px;
+}
+
+/* PSEUDO-CLASS :hover on navigation links */
+nav ul li a:hover,
+nav ul li a:focus-visible {
+  background-color: #f4b41a;
+  color: #1d2b3a;
+  text-decoration: underline;
+}
+
+
+/* ---------- Welcome section ---------- */
+#welcome {                               /* ID selector */
+  background-color: #1d2b3a;             /* background-color */
+  background-image: url("images/hero.svg");   /* background-image */
+  background-repeat: repeat;             /* background-repeat: tile the pattern */
+  background-position: center top;       /* background-position */
+  background-size: 120px 120px;          /* background-size */
+  color: white;
+  text-align: center;
+  padding: 88px 24px;
+}
+
+#welcome h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  color: white;                          /* overrides the inherited navy text colour */
+  margin: 0 0 16px;
+}
+
+/* DISPLAY: none - this element is never shown */
+.hidden-note {
+  display: none;
+}
+
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: rgb(217, 65, 43);    /* RGB colour */
+  color: white;
+  border: 2px solid rgb(217, 65, 43);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* PSEUDO-CLASS :hover on Order Now / Explore Menu / Send Message buttons */
+.btn:hover,
+.btn:focus-visible {
+  background-color: #f4b41a;
+  border-color: #f4b41a;
+  color: #1d2b3a;
+}
+
+
+/* ---------- Menu cards (BOX MODEL) ---------- */
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  box-sizing: border-box;                /* width and height include padding and border */
+  width: 250px;                          /* width */
+  height: 420px;                         /* height: same for every card */
+  padding: 16px;                         /* padding (inside the border) */
+  border: 3px solid #1d2b3a;             /* border */
+  margin: 12px;                          /* margin (outside the border) */
+  border-radius: 14px;                   /* border radius */
+  box-shadow: 0 6px 16px rgba(29, 43, 58, 0.18);   /* box shadow, RGB with alpha */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 12px 0 4px;
+  font-size: 1.3rem;
+  color: tomato;                         /* overrides inherited colour */
+}
+
+/* DESCENDANT selector: paragraphs inside a card */
+.card p {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #4a5a6a;
+}
+
+/* Higher specificity (two classes) so it beats ".card p" above */
+.card .price {
+  margin-top: auto;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  color: #1d2b3a;
+}
+
+.card .btn {
+  width: 100%;
+}
+
+/* PSEUDO-CLASS :first-child - the first food card looks different */
+.menu-grid .card:first-child {
+  background-color: #fff4cc;
+  border-color: #f4b41a;
+  box-shadow: 0 8px 22px rgba(244, 180, 26, 0.55);
+}
+
+/* Extra badge on the first card using ::before */
+.menu-grid .card:first-child::before {
+  content: "Chef's pick";
+  position: absolute;
+  top: -14px;
+  left: 16px;
+  padding: 2px 12px;
+  background-color: #1d2b3a;
+  color: #f4b41a;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+
+/* ---------- About section ---------- */
+#about {
+  background-color: white;
+  background-image: url("images/plate.svg");
+  background-repeat: no-repeat;
+  background-position: right 32px center;
+  background-size: 220px;
+}
+
+.about-text {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* SPECIFICITY demo for the About paragraph:
+   "#about p" has specificity (1,0,1), ".about-text" has (0,1,0).
+   The ID rule wins even though the class rule is written LATER. */
+#about p {
+  color: #b3261e;
+}
+.about-text {
+  color: seagreen;                       /* loses: lower specificity */
+}
+
+
+/* ---------- Contact form ---------- */
+.contact-form {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.contact-form label {
+  display: block;
+  margin: 14px 0 4px;
+  font-weight: 700;
+}
+
+/* ATTRIBUTE selectors: target form fields by their type */
+input[type="text"],
+input[type="email"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #8fa3b5;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #8fa3b5;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+input[type="submit"] {
+  margin-top: 18px;
+}
+
+input:focus,
+textarea:focus {
+  outline: 3px solid #f4b41a;
+  border-color: #1d2b3a;
+}
+
+
+/* ---------- Lab demo section ---------- */
+#lab {
+  background-color: #eef2f6;
+}
+
+#lab h3 {
+  margin: 36px 0 12px;
+}
+
+/* CASCADE demo (source order): same specificity (0,1,0), the LATER rule wins */
+.source-demo {
+  color: tomato;                         /* overridden by the rule below */
+}
+.source-demo {
+  color: seagreen;                       /* written last, so it is applied */
+  font-weight: 700;
+}
+
+/* SPECIFICITY demo: (1,1,1) beats (0,1,0) regardless of order */
+#lab p.spec-demo {
+  color: #b3261e;                        /* applied */
+  font-weight: 700;
+}
+.spec-demo {
+  color: royalblue;                      /* written later but ignored */
+}
+
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: #1d2b3a;
+  color: #c9d3dc;
+  text-align: center;
+  padding: 24px;
+}
+
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  .site-header {
+    justify-content: center;
+    text-align: center;
+  }
+  nav ul li a {
+    margin: 4px 2px;
+  }
+  #about {
+    background-image: none;              /* keeps text readable on narrow screens */
+  }
+}
